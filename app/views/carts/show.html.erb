@@ -4,8 +4,10 @@
     <h1>My Cart</h1>
   </header>
   <%if enhanced_cart.length == 0%>
-    <div class="alert alert-primary">
-      Empty cart
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert alert-heading">Your cart is empty!</h4>
+      <hr>
+      <p>Please, go to the <a href="<%= root_path %>">home page</a> or select a category from the menu on the top to find what you are looking for and add to your cart.</p>
     </div>
   <%else%>
     <div class="panel panel-default items">
