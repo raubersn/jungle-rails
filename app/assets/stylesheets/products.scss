@@ -53,6 +53,9 @@ main section.categories-show {
           background: white;
           color: rgba(0, 130, 29, 0.7);
         }
+        .btn-danger {
+          color: white;
+        }
       }
       img {
         width: 100%;
@@ -89,8 +92,12 @@ main section.categories-show {
           min-width: 110px;
           padding-left: 1em;
           padding-right: 1em;
-          background-color: rgba(0, 130, 29, 0.7);
           color: white;
+          background-color: rgba(0, 130, 29, 0.7);
+        }
+        .btn-danger {
+          background-color: rgb(220, 53, 69);
+          cursor: default;
         }
       }
     }
