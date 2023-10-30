@@ -1,2 +1,28 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<section class="admin-products-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Dashboard</h1>
+  </header>
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><%=@total_products%></h1>
+          <h4 class="card-subtitle mb-2 text-body-secondary">products</h4>
+          <p class="card-text">Total number of species registered in Jungle as products.</p>
+          <%= link_to 'Manage Products', [:admin, :products], class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><%=@total_categories%></h1>
+          <h4 class="card-subtitle mb-2 text-body-secondary">categories</h4>
+          <p class="card-text">Filtering the products by category narrows the user search.</p>
+          <%= link_to 'Manage Products', [:admin, :products], class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
