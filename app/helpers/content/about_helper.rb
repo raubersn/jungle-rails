@@ -1,0 +1,2 @@
+module Content::AboutHelper
+end
