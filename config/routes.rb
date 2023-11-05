@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#index'
 
-  get 'users/new'
-  get 'users/create'
+  resources :users, only: [:new, :create]
     
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
