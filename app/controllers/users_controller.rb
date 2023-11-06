@@ -4,12 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @category = Category.new(user_params)
+    @user = User.new(user_params)
 
-    if @category.save
-      # redirect_to [:user], notice: 'User created!'
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to '/'
     else
-      # render :new
+      render :new
     end
   end
 
@@ -17,7 +18,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      # :first_name
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation
     )
   end
 end
