@@ -8,7 +8,7 @@ RSpec.describe Product, type: :model do
       @category = Category.create(name: 'Test Category')      
     end
 
-    it 'Creates a new Product if all fields are provided' do
+    it 'Creates a new Product if all the fields are provided' do
       @product = Product.new()
 
       @product.name = 'My product'
