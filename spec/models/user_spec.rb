@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
         
         @user.save
 
-        expect(@user.errors.full_messages[0]).to eql("First name can't be blank")
+        expect(@user.errors.full_messages.first).to eql("First name can't be blank")
       end
 
       it 'user can not be created without a last name' do
@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
         
         @user.save
 
-        expect(@user.errors.full_messages[0]).to eql("Last name can't be blank")
+        expect(@user.errors.full_messages.first).to eql("Last name can't be blank")
       end
 
       it 'user can not be created without an e-mail' do
@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
         
         @user.save
 
-        expect(@user.errors.full_messages[0]).to eql("Email can't be blank")
+        expect(@user.errors.full_messages.first).to eql("Email can't be blank")
       end
     end
 
@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
         
         @user.save
 
-        expect(@user.errors.full_messages[0]).to eql("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages.first).to eql("Password confirmation doesn't match Password")
       end
 
       it 'e-mail must be unique' do
@@ -99,8 +99,22 @@ RSpec.describe User, type: :model do
         
         @user.save
 
-        expect(@user.errors.full_messages[0]).to eql("Email has already been taken")
+        expect(@user.errors.full_messages.first).to eql("Email has already been taken")
       end
+    end
+
+    it 'password can not have less than 3 characters' do
+      @user = User.new()
+
+      @user.first_name = 'Galo'
+      @user.last_name = 'Doido'
+      @user.email = 'galodoido@atletico.com.br'
+      @user.password = '13'
+      @user.password_confirmation = '13'
+      
+      @user.save
+
+      expect(@user.errors.full_messages.first).to eql("Password is too short (minimum is 3 characters)")
     end
   end
 end
