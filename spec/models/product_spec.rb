@@ -8,7 +8,7 @@ RSpec.describe Product, type: :model do
       @category = Category.create(name: 'Test Category')      
     end
 
-    it 'Creates a new Product if all fields are provided' do
+    it 'Creates a new Product if all the fields are provided' do
       @product = Product.new()
 
       @product.name = 'My product'
@@ -38,7 +38,7 @@ RSpec.describe Product, type: :model do
 
         @product.save
 
-        expect(@product.errors.full_messages[0]).to eql("Name can't be blank")
+        expect(@product.errors.full_messages.first).to eql("Name can't be blank")
       end
 
       it 'product can not be created without a price' do
@@ -53,7 +53,7 @@ RSpec.describe Product, type: :model do
 
         @product.save
 
-        expect(@product.errors.full_messages[0]).to eql("Price cents is not a number")
+        expect(@product.errors.full_messages.first).to eql("Price cents is not a number")
       end
 
       it 'product can not be created without a defined quantity' do
@@ -68,7 +68,7 @@ RSpec.describe Product, type: :model do
 
         @product.save
 
-        expect(@product.errors.full_messages[0]).to eql("Quantity can't be blank")
+        expect(@product.errors.full_messages.first).to eql("Quantity can't be blank")
       end
 
       it 'product can not be created without a category' do
@@ -83,7 +83,7 @@ RSpec.describe Product, type: :model do
 
         @product.save
 
-        expect(@product.errors.full_messages[0]).to eql("Category must exist")
+        expect(@product.errors.full_messages.first).to eql("Category must exist")
       end
     end
   end
