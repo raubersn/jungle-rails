@@ -148,5 +148,17 @@ RSpec.describe User, type: :model do
 
       expect(user).to be_a User
     end    
+
+    it "user should log in when having leading or trailing spaces" do
+      user = User.authenticate_with_credentials(' galodoido@atletico.com.br ', 'ClubeAtleticoMineiro')
+
+      expect(user).to be_a User
+    end
+
+    it "user should log in when informing the e-mail in a different case" do
+      user = User.authenticate_with_credentials('GALODOIDO@ATLETICO.COM.BR', 'ClubeAtleticoMineiro')
+
+      expect(user).to be_a User
+    end
   end
 end
