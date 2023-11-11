@@ -117,4 +117,36 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages.first).to eql("Password is too short (minimum is 3 characters)")
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    before do
+      user = User.new()
+
+      user.first_name = 'Galo'
+      user.last_name = 'Doido'
+      user.email = 'galodoido@atletico.com.br'
+      user.password = 'ClubeAtleticoMineiro'
+      user.password_confirmation = 'ClubeAtleticoMineiro'
+      
+      user.save
+    end
+
+    it "email must belong to a user" do
+      user = User.authenticate_with_credentials('galo13@atletico.com.br', 'ClubeAtleticoMineiro')
+
+      expect(user).to eql(nil)
+    end
+
+    it "password must be correct" do
+      user = User.authenticate_with_credentials('galodoido@atletico.com.br', 'Galo')
+
+      expect(user).to eql(nil)
+    end
+
+    it "user should log in when credentials are correct" do
+      user = User.authenticate_with_credentials('galodoido@atletico.com.br', 'ClubeAtleticoMineiro')
+
+      expect(user).to be_a User
+    end    
+  end
 end
